@@ -89,13 +89,13 @@ int main(int argc, char** argv) {
     }
 
     while (true) {
-        cap >> frame; // 获取一帧
-        if (frame.empty()) break; // 如果帧为空，跳出循环
+        cap >> frame;
+        if (frame.empty()) break; 
 
         // 图像预处理
         GaussianBlur(frame, frame, Size(5, 5), 0);
 
-        result = frame.clone(); // 用于绘制结果
+        result = frame.clone(); // 绘制结果
         cvtColor(frame, hsv, COLOR_BGR2HSV); // 转换到HSV颜色空间
 
         // 识别红绿灯
@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
         putText(result, lightStatus, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
 
         imshow("Traffic Light Detection", result);
-        if (waitKey(30) >= 0) break; // 按任意键退出
+        if (waitKey(30) >= 0) break; 
     }
 
     cap.release();
